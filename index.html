@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class='no-js' lang='fr'>
+
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Douet Florian</title>	
+		
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="apple-touch-icon" href="images/favicon.png">
+		
+		<link rel="stylesheet" href="css/maximage.css" media="screen">
+		<link rel="stylesheet" href="css/styles.css" media="screen">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		
+	</head>
+	<body>
+
+		<nav class="social-nav">
+			<ul>
+				<li><a href="http://twitter.com/DouetFlorian"><img id="icone" src="images/icon-twitter.png" /></a></li>
+				<li><a href="http://fr.linkedin.com/in/florian-douet"><img id="icone" src="images/icon-linkedin.png" /></a></li>
+			</ul>
+		</nav>
+
+		<!-- Contenu -->
+		<section class="content show" id="home">
+			<h1>Douet Florian</h1>
+			<h5>Mon profil</h5>
+			<p>Passionné par l'informatique depuis ma jeunesse en passant par la maintenance ou la veille informatique,<br>
+				j'ai réalisé toutes mes études d'abord en maintenance informatique et réseaux puis en réalisation de logiciels et de sites internet.</p>
+			<p><a href="cv.html"><div class="fa fa-arrow-right"></div> En savoir plus</a></p>
+		</section>
+		
+		<!-- Images du slide -->
+		<div id="maximage">
+			<div>
+				<img src="images/backgrounds/bg-img-1.jpg" alt="" />
+				<img class="gradient" src="images/backgrounds/gradient.png" alt="" />
+			</div>
+			<div>
+				<img src="images/backgrounds/bg-img-2.jpg" alt="" />
+				<img class="gradient" src="images/backgrounds/gradient.png" alt="" />
+			</div>
+			<div>
+				<img src="images/backgrounds/bg-img-3.png" alt="" />
+				<img class="gradient" src="images/backgrounds/gradient.png" alt="" />
+			</div>
+			<div>
+				<img src="images/backgrounds/bg-img-4.jpg" alt="" />
+				<img class="gradient" src="images/backgrounds/gradient.png" alt="" />
+			</div>
+			<div>
+				<img src="images/backgrounds/bg-img-5.jpg" alt="" />
+				<img class="gradient" src="images/backgrounds/gradient.png" alt="" />
+			</div>
+		</div>
+		
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+		<script src="js/jquery.cycle.all.js"></script>
+		<script src="js/jquery.maximage.js"></script>
+
+		
+		<script>
+			$(function(){
+				$('#maximage').maximage({
+					cycleOptions: {
+						fx: 'fade',
+						speed: 1000, // Vitesse de transition des images
+						timeout: 5000,
+						prev: '#arrow_left',
+						next: '#arrow_right',
+						pause: 0,
+						before: function(last,current){
+							if(!$.browser.msie){
+								// Lance le slide quand on arrive sur la page
+								if($(current).find('video').length > 0) $(current).find('video')[0].play();
+							}
+						},
+						after: function(last,current){
+							if(!$.browser.msie){
+								// Met en pause le slide quand on quitte la page
+								if($(last).find('video').length > 0) $(last).find('video')[0].pause();
+							}
+						}
+					},
+					onFirstImageLoaded: function(){
+						jQuery('#cycle-loader').hide();
+						jQuery('#maximage').fadeIn('fast');
+					}
+				});
+	
+				// Fonction pour remplir et centrer le slide
+				jQuery('video,object').maximage('maxcover');
+	
+			});
+		</script>
+  </body>
+</html>
